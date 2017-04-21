@@ -1,7 +1,7 @@
 public class Ticket implements Comparable{
     
     private int id;
-    private int VIPLevel;
+    private int priority;
     private String problem;
     private Boolean b;
     private String name;
@@ -15,5 +15,16 @@ public class Ticket implements Comparable{
 	name = "Bob";
 	solution_descrip = "";
     }
+
+    public Ticket(String user, String Description, String Priority, int len){
+	name = user;
+	problem = Description;
+	priority = Priority;
+	id = len;
+	solution_descrip = "";
+	b = false;
+    }
+
+    
 
 }
