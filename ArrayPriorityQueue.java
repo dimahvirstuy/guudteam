@@ -4,7 +4,7 @@
 //2017-04-20
 
 import java.util.ArrayList;
-public class ArrayPriorityQueue<T> implements PriorityQueue{
+public class ArrayPriorityQueue<T extends Comparable> implements PriorityQueue{
 
     private ArrayList<T> _var;
 
@@ -25,7 +25,7 @@ public class ArrayPriorityQueue<T> implements PriorityQueue{
 
     // Returns the smallest item in the priority queue without removing it. 
     public T peekMin(){
-	T minVal = _var.get(0));
+	T minVal = _var.get(0);
         for (int i = 0; i < _var.size(); i++){
 	    if(_var.get(i)< minVal){
 		minVal = _var.get(i);
@@ -38,7 +38,7 @@ public class ArrayPriorityQueue<T> implements PriorityQueue{
     public T removeMin(){
 	int minInd = 0;
 	for (int i = 0; i < _var.size(); i++){
-	    if (_var.get(i)<_var.get(minInd)){
+	    if (_var.get(i) < _var.get(minInd)){
 		minInd = i;
 	    }	    
 	}
