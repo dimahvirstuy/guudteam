@@ -1,87 +1,121 @@
-//Ibnul Jahan
-//APCS2 pd1
-//HW32 -- Getting Past the Velvet Rope
-//2017-04-20
-
+//used as a java utility
 import java.util.ArrayList;
-public class ArrayPriorityQueue<T> implements PriorityQueue{
 
-    private ArrayList<T> _var;
+public class ArrayPriorityQueue<T>{
 
-    //default constructor
+    //ArrayList is the body of the queue
+    private ArrayList _queue;
+    //to be used in methods
+    private int _size;
+    
+    //default constructor: empty ArrayList
     public ArrayPriorityQueue(){
-	_var = new ArrayList<T>();
+	//open-ended ArrayList
+	_queue = new ArrayList<T>();
+	//initialize size
+	_size = 0;
+    }
+
+    //returns whether the queue is empty
+    public boolean isEmpty(){
+	return _size == 0;
+    }
+
+    //O(1) version of add
+    public void add(T o){
+	_queue.add(o);
+	//uses the basic ArrayList mechanism, tacks onto the end
+	_size += 1;
     }
     
-    // Adds an item with ArrayList's built in add method
-    public void add(T x){
-	_var.add(x);
-    }//O(1)
-    
-    // checks whether the queue is empty or not 
-    public boolean isEmpty(){
-	return _var.size() == 0;
-    }//O(1)
-
-    // Returns the smallest item in the priority queue without removing it. 
+    //O(n) version of peekMin()
+    //goes through the entire queue, returns the smallest value
     public T peekMin(){
-	T minVal = _var.get(0));
-        for (int i = 0; i < _var.size(); i++){
-	    if(_var.get(i)< minVal){
-		minVal = _var.get(i);
-	    }
-	}
-	return minVal;
-    }//O(n)
- 
-    // Removes the smallest item in the priority queue.
+    	if (isEmpty())
+	    //no value
+    		return null;
+    	T min = (T)_queue.get(0);
+	//first object in the queue
+    	for (int x = 0; x < _size; x += 1){
+    		if (((Comparable)min).compareTo(_queue.get(x)) > 0)
+		    //traverse+compare mechanism
+    			min = (T)_queue.get(x);
+    	}
+    	return min;
+    }
+    
+    //O(n) version of removeMin()
+    //goes through, removes & returns smallest value
     public T removeMin(){
-	int minInd = 0;
-	for (int i = 0; i < _var.size(); i++){
-	    if (_var.get(i)<_var.get(minInd)){
-		minInd = i;
-	    }	    
-	}
-	T rtn= _var.get(minInd);
-	_var.remove(minInd);
-	return rtn;
-    }//O(n)
-
-    public String toString(){
-	String ret= "";
-	for(int i=0; i<_var.size(); i++){
-	    ret+= _var.get(i)+ " ";
-	}
-	return ret;
+    	if (isEmpty())
+	    //base case: no value to return
+    		return null;
+    	T min = (T)_queue.get(0);
+	//second tracker value: minPos
+	//while min is simply used for comparison's sake, minPos accompanies,
+	//and is actually used as the argument when remove() is called
+    	int minPos = 0;
+    	for (int x = 0; x < _size; x += 1){
+    		if (((Comparable)min).compareTo(_queue.get(x)) > 0){
+    			min = (T)_queue.get(x);
+    			minPos = x;
+    		}
+    	}
+	//minPos is the argument
+    	_queue.remove(minPos);
+	_size -= 1;
+    	return min;
     }
 
     public static void main(String[] args){
-	ArrayPriorityQueue<Integer> ibnul= new ArrayPriorityQueue<Integer>();
-	System.out.println("checking if there is data in the queue");
-	System.out.println(ibnul.isEmpty());
+	ArrayPriorityQueue jenny = new ArrayPriorityQueue();
+	System.out.println(jenny.isEmpty());//should be true
+
+	//adding Jenny's number
+	jenny.add(8);
+	jenny.add(6);
+	jenny.add(7);
+	jenny.add(5);
+	jenny.add(3);
+	jenny.add(0);
+	jenny.add(9);
+
+	//removing nombres one by one
+	System.out.println(jenny.peekMin());
+	System.out.println(jenny.removeMin());
+	System.out.println(jenny.isEmpty());
+	//0, false
+
+	System.out.println(jenny.peekMin());
+	System.out.println(jenny.removeMin());
+	System.out.println(jenny.isEmpty());
+	//3, false
+
+	System.out.println(jenny.peekMin());
+	System.out.println(jenny.removeMin());
+	System.out.println(jenny.isEmpty());
+	//5, false
+
+	System.out.println(jenny.peekMin());
+	System.out.println(jenny.removeMin());
+	System.out.println(jenny.isEmpty());
+	//6, false
 	
-	ibnul.add(2);
-       	ibnul.add(9);
-	ibnul.add(0);
+	System.out.println(jenny.peekMin());
+	System.out.println(jenny.removeMin());
+	System.out.println(jenny.isEmpty());
+	//7, false
 
-	System.out.println(ibnul);
-	System.out.println("checking if there is data in the queue");
-	System.out.println(ibnul.isEmpty());
+	System.out.println(jenny.peekMin());
+	System.out.println(jenny.removeMin());
+	System.out.println(jenny.isEmpty());
+	//8, false
 
-	System.out.println("checking peekMin");
-	System.out.println(ibnul.peekMin());
-	System.out.println(ibnul);
-	System.out.println();
-
-	System.out.println("checking remove");
-	
-	System.out.println(ibnul.removeMin());
-	System.out.println(ibnul);
-	System.out.println(ibnul.removeMin());
-	System.out.println(ibnul);
-	System.out.println(ibnul.removeMin());
-	System.out.println(ibnul);
-	System.out.println("no more data to remove, thus an error");
-	System.out.println(ibnul.removeMin());
+	System.out.println(jenny.peekMin());
+	System.out.println(jenny.removeMin());
+	System.out.println(jenny.isEmpty());
+	//9, true	
     }
+    
 }
+
