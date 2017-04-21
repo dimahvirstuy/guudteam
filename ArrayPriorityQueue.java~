@@ -4,17 +4,17 @@
 //2017-04-20
 
 import java.util.ArrayList;
-public class ArrayPriorityQueue<T> implements PriorityQueue{
+public class ArrayPriorityQueue implements PriorityQueue{
 
-    private ArrayList<T> _var;
+    private ArrayList<Integer> _var;
 
     //default constructor
     public ArrayPriorityQueue(){
-	_var = new ArrayList<T>();
+	_var = new ArrayList();
     }
     
     // Adds an item with ArrayList's built in add method
-    public void add(T x){
+    public void add(int x){
 	_var.add(x);
     }//O(1)
     
@@ -24,8 +24,8 @@ public class ArrayPriorityQueue<T> implements PriorityQueue{
     }//O(1)
 
     // Returns the smallest item in the priority queue without removing it. 
-    public T peekMin(){
-	T minVal = _var.get(0));
+    public int peekMin(){
+	int minVal = _var.get(0));
         for (int i = 0; i < _var.size(); i++){
 	    if(_var.get(i)< minVal){
 		minVal = _var.get(i);
@@ -35,14 +35,14 @@ public class ArrayPriorityQueue<T> implements PriorityQueue{
     }//O(n)
  
     // Removes the smallest item in the priority queue.
-    public T removeMin(){
+    public int removeMin(){
 	int minInd = 0;
 	for (int i = 0; i < _var.size(); i++){
 	    if (_var.get(i)<_var.get(minInd)){
 		minInd = i;
 	    }	    
 	}
-	T rtn= _var.get(minInd);
+	int rtn= _var.get(minInd);
 	_var.remove(minInd);
 	return rtn;
     }//O(n)
@@ -56,7 +56,7 @@ public class ArrayPriorityQueue<T> implements PriorityQueue{
     }
 
     public static void main(String[] args){
-	ArrayPriorityQueue<Integer> ibnul= new ArrayPriorityQueue<Integer>();
+	ArrayPriorityQueue ibnul= new ArrayPriorityQueue();
 	System.out.println("checking if there is data in the queue");
 	System.out.println(ibnul.isEmpty());
 	
