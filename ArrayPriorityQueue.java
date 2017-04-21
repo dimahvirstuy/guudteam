@@ -1,7 +1,7 @@
 //used as a java utility
 import java.util.ArrayList;
 
-public class ArrayPriorityQueue<T>{
+public class ArrayPriorityQueue<T> implements PriorityQueue<T>{
 
     //ArrayList is the body of the queue
     private ArrayList _queue;
