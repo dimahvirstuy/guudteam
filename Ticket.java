@@ -38,4 +38,9 @@ public class Ticket implements Comparable<Ticket>{
 	    return 0;
     }
 
+    public String toString(){
+        return "ID: " + id + ", Name: " + name;
+	
+    }
+
 }

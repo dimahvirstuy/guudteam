@@ -66,7 +66,17 @@ public class ArrayPriorityQueue<T> implements PriorityQueue<T>{
 	_size -= 1;
     	return min;
     }
-
+    // public String toString(){
+    //	return _queue.toString();
+    //}
+    public String toString(){
+	String rtn = "";
+	for (int i = 0 ; i < _queue.size(); i++){
+	    rtn += _queue.get(i) + "\n";
+	}
+	return rtn;
+    }
+    
     public static void main(String[] args){
 	ArrayPriorityQueue jenny = new ArrayPriorityQueue();
 	System.out.println(jenny.isEmpty());//should be true
@@ -79,6 +89,7 @@ public class ArrayPriorityQueue<T> implements PriorityQueue<T>{
 	jenny.add(3);
 	jenny.add(0);
 	jenny.add(9);
+	System.out.println(jenny);
 
 	//removing nombres one by one
 	System.out.println(jenny.peekMin());
