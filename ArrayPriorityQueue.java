@@ -66,6 +66,10 @@ public class ArrayPriorityQueue<T> implements PriorityQueue<T>{
 	_size -= 1;
     	return min;
     }
+    public int size(){
+	return _size;
+    }
+    
     // public String toString(){
     //	return _queue.toString();
     //}

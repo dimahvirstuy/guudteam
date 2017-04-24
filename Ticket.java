@@ -16,16 +16,19 @@ public class Ticket implements Comparable<Ticket>{
 	solution_descrip = "";
     }
 
-    public Ticket(String user, String Description, int Priority, int len){
+    public Ticket(String user, String Description, String Solution, int Priority, int len){
 	name = user;
 	problem = Description;
 	priority = Priority;
 	id = len;
-	solution_descrip = "";
+	solution_descrip = Solution;
 	solved = false;
     }
     public String getName(){
 	return name;
+    }
+    public String getProblem(){
+	return problem;
     }
     public String getSolution(){
 	return solution_descrip;
