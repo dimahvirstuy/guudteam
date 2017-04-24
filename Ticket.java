@@ -24,7 +24,12 @@ public class Ticket implements Comparable<Ticket>{
 	solution_descrip = "";
 	solved = false;
     }
-
+    public String getName(){
+	return name;
+    }
+    public String getSolution(){
+	return solution_descrip;
+    }
     public int getPrior(){
 	return priority;
     }

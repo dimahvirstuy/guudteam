@@ -37,13 +37,16 @@ public class HelpDesk {
 	int priority = (int)(Math.random() * 10);
 	_queue.add(new Ticket(user, Description, priority, len));
 	len++;
+	System.out.println("Gotcha " + user + ", you're on the queue and there are " + (len-passed) + "people on it with you you, please wait"); 
     }
 
-    public static void processQueue(){}
+    public static void processQueue(){
+	processTicket(_queue.removeMin());
+    }
 	
-    //System.out.println("Gotcha " + user + ", you're on the queue and there are " + len - passed + "people in front of you, please wait"); 
-    public static void processTicket(){
-	
+    
+    public static void processTicket(Ticket ticket){
+	System.out.println("Hey " + ticket.getName() +", luckily we just solved your problem!! If you're wondering, we did it by " + ticket.getSolution() +".");
     }
     
 	
